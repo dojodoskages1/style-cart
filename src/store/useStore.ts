@@ -7,7 +7,7 @@ export interface Product {
   price: number;
   description: string;
   sizes: string[];
-  imageUrl: string;
+  images: string[];
 }
 
 export interface CartItem {
@@ -45,7 +45,11 @@ const initialProducts: Product[] = [
     price: 129.90,
     description: 'Camiseta premium com estampa exclusiva de samurai. Tecido 100% algodão penteado.',
     sizes: ['P', 'M', 'G', 'GG'],
-    imageUrl: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500',
+    images: [
+      'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500',
+      'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500',
+      'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500',
+    ],
   },
   {
     id: '2',
@@ -54,7 +58,11 @@ const initialProducts: Product[] = [
     price: 249.90,
     description: 'Moletom oversized com capuz. Design minimalista com detalhes bordados.',
     sizes: ['P', 'M', 'G', 'GG'],
-    imageUrl: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500',
+    images: [
+      'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500',
+      'https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?w=500',
+      'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500',
+    ],
   },
   {
     id: '3',
@@ -63,7 +71,11 @@ const initialProducts: Product[] = [
     price: 199.90,
     description: 'Calça cargo com bolsos funcionais. Tecido ripstop resistente.',
     sizes: ['38', '40', '42', '44'],
-    imageUrl: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500',
+    images: [
+      'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500',
+      'https://images.unsplash.com/photo-1542272604-787c3835535d?w=500',
+      'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500',
+    ],
   },
   {
     id: '4',
@@ -72,7 +84,11 @@ const initialProducts: Product[] = [
     price: 399.90,
     description: 'Jaqueta estilo bomber com forro interno. Acabamento premium.',
     sizes: ['P', 'M', 'G', 'GG'],
-    imageUrl: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500',
+    images: [
+      'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500',
+      'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500',
+      'https://images.unsplash.com/photo-1559551409-dadc959f76b8?w=500',
+    ],
   },
 ];
 

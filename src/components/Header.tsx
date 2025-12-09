@@ -1,4 +1,4 @@
-import { ShoppingCart, Menu, X, User } from 'lucide-react';
+import { ShoppingCart, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useStore } from '@/store/useStore';
@@ -32,19 +32,6 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link 
-              to="/" 
-              className="text-foreground hover:text-primary transition-colors font-medium"
-            >
-              Coleções
-            </Link>
-            <Link 
-              to="/admin" 
-              className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-            >
-              <User size={18} />
-              Admin
-            </Link>
             <Link 
               to="/cart" 
               className="relative flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded hover:bg-primary/90 transition-colors"
@@ -87,14 +74,7 @@ const Header = () => {
                 className="text-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Coleções
-              </Link>
-              <Link 
-                to="/admin" 
-                className="text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Área Administrativa
+                Início
               </Link>
             </div>
           </nav>

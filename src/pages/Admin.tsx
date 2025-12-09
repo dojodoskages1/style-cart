@@ -12,7 +12,7 @@ const productSchema = z.object({
   price: z.number().positive("Preço deve ser positivo"),
   description: z.string().trim().min(10, "Descrição muito curta").max(500),
   sizes: z.string().trim().min(1, "Informe os tamanhos"),
-  imageUrl: z.string().url("URL inválida"),
+  images: z.string().trim().min(1, "Informe as URLs das imagens"),
 });
 
 const Admin = () => {
@@ -27,7 +27,7 @@ const Admin = () => {
     price: '',
     description: '',
     sizes: '',
-    imageUrl: '',
+    images: '',
   });
 
   const resetForm = () => {
@@ -37,7 +37,7 @@ const Admin = () => {
       price: '',
       description: '',
       sizes: '',
-      imageUrl: '',
+      images: '',
     });
   };
 
@@ -58,6 +58,7 @@ const Admin = () => {
       ...formData,
       price: parseFloat(formData.price),
       sizes: formData.sizes,
+      images: formData.images,
     };
 
     const result = productSchema.safeParse(data);
@@ -72,7 +73,7 @@ const Admin = () => {
       price: parseFloat(formData.price),
       description: formData.description,
       sizes: formData.sizes.split(',').map((s) => s.trim()),
-      imageUrl: formData.imageUrl,
+      images: formData.images.split(',').map((s) => s.trim()),
     });
 
     toast({ title: "Produto adicionado!" });
@@ -84,6 +85,7 @@ const Admin = () => {
     const data = {
       ...formData,
       price: parseFloat(formData.price),
+      images: formData.images,
     };
 
     const result = productSchema.safeParse(data);
@@ -98,7 +100,7 @@ const Admin = () => {
       price: parseFloat(formData.price),
       description: formData.description,
       sizes: formData.sizes.split(',').map((s) => s.trim()),
-      imageUrl: formData.imageUrl,
+      images: formData.images.split(',').map((s) => s.trim()),
     });
 
     toast({ title: "Produto atualizado!" });
@@ -114,7 +116,7 @@ const Admin = () => {
       price: product.price.toString(),
       description: product.description,
       sizes: product.sizes.join(', '),
-      imageUrl: product.imageUrl,
+      images: product.images.join(', '),
     });
   };
 
@@ -274,13 +276,13 @@ const Admin = () => {
 
               <div className="md:col-span-2">
                 <label className="block text-sm text-muted-foreground mb-2">
-                  URL da Imagem
+                  URLs das Imagens (separadas por vírgula)
                 </label>
-                <input
-                  type="url"
-                  value={formData.imageUrl}
-                  onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
-                  className="w-full bg-input border border-border rounded px-4 py-3 text-foreground focus:border-primary focus:outline-none"
+                <textarea
+                  value={formData.images}
+                  onChange={(e) => setFormData({ ...formData, images: e.target.value })}
+                  className="w-full bg-input border border-border rounded px-4 py-3 text-foreground focus:border-primary focus:outline-none h-20 resize-none"
+                  placeholder="https://imagem1.jpg, https://imagem2.jpg"
                   required
                 />
               </div>
@@ -351,11 +353,11 @@ const Admin = () => {
                       placeholder="Tamanhos"
                     />
                     <input
-                      type="url"
-                      value={formData.imageUrl}
-                      onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                      type="text"
+                      value={formData.images}
+                      onChange={(e) => setFormData({ ...formData, images: e.target.value })}
                       className="bg-input border border-border rounded px-4 py-2 text-foreground md:col-span-2"
-                      placeholder="URL da Imagem"
+                      placeholder="URLs das Imagens (separadas por vírgula)"
                     />
                     <textarea
                       value={formData.description}
@@ -387,7 +389,7 @@ const Admin = () => {
               ) : (
                 <div className="flex gap-4">
                   <img
-                    src={product.imageUrl}
+                    src={product.images[0]}
                     alt={product.name}
                     className="w-20 h-20 object-cover rounded"
                   />
